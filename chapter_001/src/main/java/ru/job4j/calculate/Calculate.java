@@ -1,18 +1,28 @@
 package ru.job4j.calculate;
+
 /**
-	*Класс. Должен совпадать с именем файла.
-	*/
+ * Calculate.
+ *
+ * @author Kirill_lityuchii (Kirill_lityuchii@mail.ru)
+ * @version 1.0
+ * @since 1.0
+ */
 public class Calculate {
-	/**
-	*main - сновной метод для запуска приложения 
-	*объявлен как public, static, void
-	*метод println выводит на консоль текст Hello World
-	*параметр ln переносит курсор на следующую строку
-	*@param Strings[] args - массив из строк с аргументами, которые ей передали
-	*@return Выводит на консоль текст Hello World
-	*/
-	public static void main(String[] args) {
-		System.out.println ("Hello World");
-	}
-	
+    /**
+     * Main.
+     * @param args - args.
+     */
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+
+    /**
+     * Method echo.
+     * @param name your name.
+     * @return Echo plus your name.
+     */
+    public String echo(String name) {
+        return "Echo, echo, echo : " + name;
+    }
 }
+ 
