@@ -17,3 +17,4 @@ public class PointTest {
         assertThat(result, closeTo(expected, 0.1));
     }
 }
+
