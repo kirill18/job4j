@@ -12,8 +12,10 @@ public class Triangle {
     }
 
     public double period(double ab, double ac, double bc) {
+
         return (ab + ac + bc) / 2;
     }
+
     public double area() {
         double rsl = -1; // мы устанавливаем значение -1, так как может быть что треугольника нет. Это значение говорит о том. что треугольника нет.
         double ab = this.a.distanceTo(this.b);
@@ -23,11 +25,10 @@ public class Triangle {
         if (this.exist(ab, ac, bc)) {
             rsl = Math.sqrt(p * (p - ab) * (p - bc) * (p - ac));
         }
-            return rsl;
-        }
-        private boolean exist(double ab, double ac, double bc) {
-        if (ab - ac > bc && (bc - ac > ab && ab - bc > ac)) {
+        return rsl;
     }
-            return true;
+
+    private boolean exist(double ab, double ac, double bc) {
+        return (ab + ac > bc && bc + ac > ab && ab + bc > ac);
     }
 }
