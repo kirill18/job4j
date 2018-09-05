@@ -8,9 +8,9 @@ public class SquareTest {
     @Test
     public void whenBound3Then1491625() {
         Square square = new Square();
-        int bound = 5;
+        int bound = 7;
         int[] rst = square.calculate(bound);
-        int[] expect = new int[] {1, 4, 9, 16, 25};
+        int[] expect = new int[] {1, 4, 9, 16, 25, 36, 49};
         assertThat(rst, is(expect));
     }
 }

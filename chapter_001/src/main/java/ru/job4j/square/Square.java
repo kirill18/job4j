@@ -6,12 +6,9 @@ public class Square {
 
     public int[] calculate(int bound) {
         int[] rst = new int[bound];
-         rst[0] = 1;
-         rst[1] = 2;
-         rst[2] = 3;
-         rst[3] = 4;
-         rst[4] = 5;
-
+        for (int n = 0; n < rst.length; n++) {
+            rst[n] = n + 1;
+        }
         for (int x = 0; x < rst.length; x++) {
            rst[x] *= rst[x];
             System.out.println(Arrays.toString(rst));
