@@ -4,11 +4,11 @@ public class Board {
     public String paint(int width, int height) {
         StringBuilder screen = new StringBuilder();
         String ln = System.lineSeparator();
-        for (; height > 0; height--) {
+        for (int j = 0; height > j; j++) {
 
-            for (; width !=0; width--) {
+            for (int i = 0; width > i; i++) {
 
-                if ((width + height) % 2 == 0) {
+                if ((j + i) % 2 == 0) {
 
                     screen.append("X");
 
@@ -18,9 +18,6 @@ public class Board {
                 }
             }
             screen.append(ln);
-            width++;
-            width++;
-            width++;
         }
         System.out.println(screen.toString());
         return screen.toString();
