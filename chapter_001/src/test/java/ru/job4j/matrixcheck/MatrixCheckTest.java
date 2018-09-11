@@ -44,10 +44,10 @@ public class MatrixCheckTest {
     public void whenDataMonoByTrueThenTrue4x4() {
         MatrixCheck check = new MatrixCheck();
         boolean[][] input = new boolean[][] {
-                {false, false,true, false},
-                {true,false, false, true},
-                {true, false, false, true},
-                {false, true, false, false}
+                {true, false,true, false},
+                {true,true, false, true},
+                {true, false, true, true},
+                {false, true, false, true}
         };
         boolean result = check.mono(input);
         assertThat(result, is(true));
