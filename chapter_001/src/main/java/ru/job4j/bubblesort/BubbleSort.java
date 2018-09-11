@@ -15,23 +15,25 @@ public class BubbleSort {
      * @return возвращает отсортированный массив
      */
 
-    public int[] sort(int[] array) {
-               boolean isSorted = false;
-        int buf;
+      public int[] sort(int[] array) {
+        boolean isSorted = false;
         while (!isSorted) {
             isSorted = true;
-            for (int i = 0; i < array.length - 1; i++) {
-                if (array[i] > array[i + 1]) {
-                    isSorted = false;
-                    buf = array[i];
-                    array[i] = array[i + 1];
-                    array[i + 1] = buf;
+            for (int j = array.length - 1; j >= 1; j--) {
+                for (int i = 0; i < j; i++) {
+                    if (array[i] > array[i + 1]) {
+                        isSorted = false;
+                        int buf = array[i];
+                        array[i] = array[i + 1];
+                        array[i + 1] = buf;
+                    }
                 }
             }
         }
         return array;
     }
 }
+
 
 
 
