@@ -1,54 +1,57 @@
 package ru.job4j.tictactoe;
 
-import java.util.function.Predicate;
 
 public class Logic3T {
     private final Figure3T[][] table;
 
     public Logic3T(Figure3T[][] table) {
+
         this.table = table;
     }
 
     public boolean isWinnerX() {
-        boolean result = false;
-        if (table[0][0].hasMarkX() && table[1][1].hasMarkX() && table[2][2].hasMarkX()) {
-        result = true;
-   } else if (table[0][2].hasMarkX() && table[1][1].hasMarkX() && table[2][0].hasMarkX()) {
-        result = true;
-    } else if (table[0][0].hasMarkX() && table[1][0].hasMarkX() && table[2][0].hasMarkX()) {
-        result = true;
-    } else if (table[0][1].hasMarkX() && table[1][1].hasMarkX() && table[2][1].hasMarkX()) {
-        result = true;
-    } else if (table[0][2].hasMarkX() && table[1][2].hasMarkX() && table[2][2].hasMarkX()) {
-        result = true;
-    } else if (table[0][0].hasMarkX() && table[0][1].hasMarkX() && table[0][2].hasMarkX()) {
-        result = true;
-    } else if (table[1][0].hasMarkX() && table[1][1].hasMarkX() && table[1][2].hasMarkX()) {
-        result = true;
-    } else if (table[2][0].hasMarkX() && table[2][1].hasMarkX() && table[2][2].hasMarkX()) {
-        result = true;
+        boolean result = true;
+        for (int i = 0; i < table.length; i++) {
+            result = true;
+            for (int j = 0; j < table.length - 1; j++) {
+                if (!(table[j][i].hasMarkX() && table[j + 1][i].hasMarkX())
+                        &&
+                        !(table[i][j].hasMarkX() && table[i][j + 1].hasMarkX())
+                        &&
+                        !(table[j][j].hasMarkX() && table[j + 1][j + 1].hasMarkX())
+                        &&
+                        !(table[j][table.length - j - 1].hasMarkX() && table[table.length - 1][0].hasMarkX())) {
+                    result = false;
+                    break;
+                }
+            }
+            if (result) {
+                break;
+            }
         }
         return result;
     }
 
-        public boolean isWinnerO() {
+    public boolean isWinnerO() {
             boolean result = false;
-            if (table[0][0].hasMarkO() && table[1][1].hasMarkO() && table[2][2].hasMarkO()) {
-                result = true;
-            } else if (table[0][2].hasMarkO() && table[1][1].hasMarkO() && table[2][0].hasMarkO()) {
-                result = true;
-            } else if (table[0][0].hasMarkO() && table[1][0].hasMarkO() && table[2][0].hasMarkO()) {
-                result = true;
-            } else if (table[0][1].hasMarkO() && table[1][1].hasMarkO() && table[2][1].hasMarkO()) {
-                result = true;
-            } else if (table[0][2].hasMarkO() && table[1][2].hasMarkO() && table[2][2].hasMarkO()) {
-                result = true;
-            } else if (table[0][0].hasMarkO() && table[0][1].hasMarkO() && table[0][2].hasMarkO()) {
-                result = true;
-            } else if (table[1][0].hasMarkO() && table[1][1].hasMarkO() && table[1][2].hasMarkO()) {
-                result = true;
-            } else if (table[2][0].hasMarkO() && table[2][1].hasMarkO() && table[2][2].hasMarkO()) {
-                result = true;
+            for (int i = 0; i < table.length; i++) {
+                for (int j = 0; j < table.length - 1; j++) {
+                        if (table[j][i].hasMarkO() && table[j + 1][i].hasMarkO()) {
+                            result = true;
+                        }
+                        else if (table[i][j].hasMarkO() && table[i][j + 1].hasMarkO()) {
+                            result = true;
+                        }
+                        else if (table[j][j].hasMarkO() && table[j + 1][j + 1].hasMarkO()) {
+                            result = true;
+                        }
+                        else if (table[j][table.length - j - 1].hasMarkO() && table[table.length - 1][0].hasMarkO()) {
+                            result = true;
+                        }
+                    }
+                    if (result) {
+                        break;
+                    }
             }
             return result;
         }
