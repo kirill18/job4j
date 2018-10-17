@@ -1,5 +1,7 @@
 package ru.job4j.tictactoe;
 
+import java.util.function.Predicate;
+
 public class Logic3T {
     private final Figure3T[][] table;
 
@@ -9,118 +11,51 @@ public class Logic3T {
     }
 
     public boolean isWinnerX() {
-        boolean result = true;
-        for (int i = 0; i < table.length; i++) {
-            result = true;
-            for (int j = 0; j < table.length; j++) {
-                if (!table[j][i].hasMarkX()) {
-                    result = false;
-                    break;
-                }
-            }
-            if (result) {
-                break;
-            }
-        }
-        if (!result) {
-            for (int i = 0; i < table.length; i++) {
-                result = true;
-                for (int j = 0; j < table.length; j++) {
-                    if (!table[i][j].hasMarkX()) {
-                        result = false;
-                        break;
-                    }
-                }
-                if (result) {
-                    break;
-                }
-            }
-        }
-        if (!result) {
-            for (int i = 0; i < table.length; i++) {
-                result = true;
-                for (int j = 0; j < table.length; j++) {
-                    if (!table[j][table.length - j - 1].hasMarkX()) {
-                        result = false;
-                        break;
-                    }
-                }
-                if (result) {
-                    break;
-                }
-            }
-        }
-        if (!result) {
-            for (int i = 0; i < table.length; i++) {
-                result = true;
-                for (int j = 0; j < table.length; j++) {
-                    if (!table[j][j].hasMarkX()) {
-                        result = false;
-                        break;
-                    }
-                }
-                if (result) {
-                    break;
-                }
-            }
-        }
-        return result;
+        return this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 0)
+                ||
+                this.fillBy(Figure3T::hasMarkX, 0, 0, 0, 1)
+                ||
+                this.fillBy(Figure3T::hasMarkX, 0, 0, 1, 1)
+                ||
+                this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, -1, 1)
+                ||
+                this.fillBy(Figure3T::hasMarkX, this.table.length - 2, 0, 0, 1)
+                ||
+                this.fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, 0, 1)
+                ||
+                this.fillBy(Figure3T::hasMarkX, 0, this.table.length - 1, 1, 0)
+                ||
+                this.fillBy(Figure3T::hasMarkX, 0, this.table.length - 2, 1, 0);
     }
 
+
     public boolean isWinnerO() {
+        return this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 0)
+                ||
+                this.fillBy(Figure3T::hasMarkO, 0, 0, 0, 1)
+                ||
+                this.fillBy(Figure3T::hasMarkO, 0, 0, 1, 1)
+                ||
+                this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, -1, 1)
+                ||
+                this.fillBy(Figure3T::hasMarkO, this.table.length - 2, 0, 0, 1)
+                ||
+                this.fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, 0, 1)
+                ||
+                this.fillBy(Figure3T::hasMarkO, 0, this.table.length - 1, 1, 0)
+                ||
+                this.fillBy(Figure3T::hasMarkO, 0, this.table.length - 2, 1, 0);
+    }
+
+    public boolean fillBy(Predicate<Figure3T> predicate, int startX, int startY, int deltaX, int deltaY) {
         boolean result = true;
-        for (int i = 0; i < table.length; i++) {
-            result = true;
-            for (int j = 0; j < table.length; j++) {
-                if (!table[j][i].hasMarkO()) {
-                    result = false;
-                    break;
-                }
-            }
-            if (result) {
+        for (int index = 0; index != this.table.length; index++) {
+            Figure3T cell = this.table[startX][startY];
+            startX += deltaX;
+            startY += deltaY;
+            if (!predicate.test(cell)) {
+                result = false;
                 break;
-            }
-        }
-        if (!result) {
-            for (int i = 0; i < table.length; i++) {
-                result = true;
-                for (int j = 0; j < table.length; j++) {
-                    if (!table[i][j].hasMarkO()) {
-                        result = false;
-                        break;
-                    }
-                }
-                if (result) {
-                    break;
-                }
-            }
-        }
-        if (!result) {
-            for (int i = 0; i < table.length; i++) {
-                result = true;
-                for (int j = 0; j < table.length; j++) {
-                    if (!table[j][table.length - j - 1].hasMarkO()) {
-                        result = false;
-                        break;
-                    }
-                }
-                if (result) {
-                    break;
-                }
-            }
-        }
-        if (!result) {
-            for (int i = 0; i < table.length; i++) {
-                result = true;
-                for (int j = 0; j < table.length; j++) {
-                    if (!table[j][j].hasMarkO()) {
-                        result = false;
-                        break;
-                    }
-                }
-                if (result) {
-                    break;
-                }
             }
         }
         return result;
