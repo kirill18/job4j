@@ -13,21 +13,15 @@ public class Logic3T {
     public boolean isWinnerX() {
     boolean result = false;
         for (int i = 0; i < table.length; i++) {
-            if (fillBy(Figure3T::hasMarkX, 0, i, 1, 0)) {
+            if (fillBy(Figure3T::hasMarkX, 0, i, 1, 0) || fillBy(Figure3T::hasMarkX, i, 0, 0, 1)) {
                 result = true;
                 break;
             }
-        }
-            for (int j = 0; j < table.length; j++) {
-                if (fillBy(Figure3T::hasMarkX, j, 0, 0, 1)) {
-                    result = true;
-                    break;
-                }
             }
-            if (fillBy(Figure3T::hasMarkX, 0, 0, 1, 1)
+        if (result || fillBy(Figure3T::hasMarkX, 0, 0, 1, 1)
                 || fillBy(Figure3T::hasMarkX, this.table.length - 1, 0, -1, 1)) {
-                result = true;
-            }
+            result = true;
+        }
           return result;
     }
 
@@ -35,18 +29,12 @@ public class Logic3T {
     public boolean isWinnerO() {
         boolean result = false;
         for (int i = 0; i < table.length; i++) {
-            if (fillBy(Figure3T::hasMarkO, 0, i, 1, 0)) {
+            if (fillBy(Figure3T::hasMarkO, 0, i, 1, 0) || fillBy(Figure3T::hasMarkO, i, 0, 0, 1)) {
                 result = true;
                 break;
             }
         }
-        for (int j = 0; j < table.length; j++) {
-            if (fillBy(Figure3T::hasMarkO, j, 0, 0, 1)) {
-                result = true;
-                break;
-            }
-        }
-        if (fillBy(Figure3T::hasMarkO, 0, 0, 1, 1)
+        if (result || fillBy(Figure3T::hasMarkO, 0, 0, 1, 1)
                 || fillBy(Figure3T::hasMarkO, this.table.length - 1, 0, -1, 1)) {
             result = true;
         }
