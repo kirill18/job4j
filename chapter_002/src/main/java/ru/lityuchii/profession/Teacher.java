@@ -1,7 +1,11 @@
 package ru.lityuchii.profession;
 
-Public class Teacher extends profession {
-    public String teach(Studient studient){
-        return skill;
+public class Teacher extends Profession {
+
+    class Student {
+        String name;
+    }
+
+    public void teach(Student student) {
     }
 }

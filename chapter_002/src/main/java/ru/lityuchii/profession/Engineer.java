@@ -1,7 +1,12 @@
 package ru.lityuchii.profession;
 
-Public class Engineer extends profession {
-    public double buildHouse(House house){
-        return house;
-    }
+public class Engineer extends Profession {
+
+
+class House {
+    double height;
+}
+
+public void build(House house) {
+}
 }
