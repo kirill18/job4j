@@ -16,23 +16,23 @@ public class ThirdSortArray {
      */
 
     public int[] plusSortArrays(int[] array1, int[] array2) {
-        int[] SumArray = new int[array1.length + array2.length];
+        int[] sumArray = new int[array1.length + array2.length];
                 int i = 0, j = 0;
-        for (int index = 0; index < SumArray.length; index++) {
+        for (int index = 0; index < sumArray.length; index++) {
                 if (i > array1.length - 1) {
-                SumArray[index] =array2[j++];
-            }
-            else if (j > array2.length - 1) {
-                SumArray[index] = array1[i++];
+                sumArray[index] = array2[j++];
                 }
-                else if (array1[i] < array2[j]) {
-                SumArray[index] = array1[i++];
+            else if (j > array2.length - 1) {
+                sumArray[index] = array1[i++];
             }
+                else if (array1[i] < array2[j]) {
+                sumArray[index] = array1[i++];
+                }
             else {
-                SumArray[index] = array2[j++];
+                sumArray[index] = array2[j++];
             }
         }
-        return SumArray;
+        return sumArray;
     }
 }
 

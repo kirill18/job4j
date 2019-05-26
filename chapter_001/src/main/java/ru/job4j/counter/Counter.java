@@ -7,10 +7,10 @@ public class Counter {
               if (start % 2 == 1) {
                   continue;
               }
-              System.out.println("значение" +start);
+              System.out.println("значение" + start);
           }
           start--;
           // Найдем сумму арифметической прогрессии
-          return ((2 + finish) * start / 2)/ 2;
+          return ((2 + finish) * start / 2) / 2;
       }
 }
